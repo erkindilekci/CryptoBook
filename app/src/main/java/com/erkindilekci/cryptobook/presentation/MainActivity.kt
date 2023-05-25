@@ -19,11 +19,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             Surface(color = MyBlack) {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = Screen.CoinListScreen.route) {
-                    composable(Screen.CoinListScreen.route){
+                NavHost(
+                    navController = navController,
+                    startDestination = Screen.CoinListScreen.route
+                ) {
+                    composable(Screen.CoinListScreen.route) {
                         CoinListScreen(navController)
                     }
-                    composable(route = Screen.CoinDetailScreen.route + "/{coinId}"){
+                    composable(route = Screen.CoinDetailScreen.route + "/{coinId}") {
                         CoinDetailScreen()
                     }
                 }

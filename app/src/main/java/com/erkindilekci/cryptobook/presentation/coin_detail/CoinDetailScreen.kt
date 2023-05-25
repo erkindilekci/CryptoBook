@@ -1,7 +1,15 @@
 package com.erkindilekci.cryptobook.presentation.coin_detail
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
@@ -49,7 +57,8 @@ fun CoinDetailScreen(
                             color = TextWhite
                         )
 
-                        Text(text = if (coin.isActive) "active" else "inactive",
+                        Text(
+                            text = if (coin.isActive) "active" else "inactive",
                             color = if (coin.isActive) Color.Green else Color.Red,
                             fontStyle = FontStyle.Italic,
                             textAlign = TextAlign.End,
@@ -60,17 +69,25 @@ fun CoinDetailScreen(
                     }
 
                     Spacer(modifier = Modifier.height(15.dp))
-                    
-                    Text(text = coin.description, style = MaterialTheme.typography.body2, color = TextWhite)
+
+                    Text(
+                        text = coin.description,
+                        style = MaterialTheme.typography.body2,
+                        color = TextWhite
+                    )
 
                     Spacer(modifier = Modifier.height(15.dp))
-                    
-                    Text(text = "Tags", fontSize = 24.sp,color = TextWhite)
+
+                    Text(text = "Tags", fontSize = 24.sp, color = TextWhite)
 
                     Spacer(modifier = Modifier.height(15.dp))
-                    
-                    FlowRow(mainAxisSpacing = 10.dp, crossAxisSpacing = 10.dp, modifier = Modifier.fillMaxWidth()) {
-                        coin.tags.forEach { 
+
+                    FlowRow(
+                        mainAxisSpacing = 10.dp,
+                        crossAxisSpacing = 10.dp,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        coin.tags.forEach {
                             CoinTag(tag = it)
                         }
                     }
@@ -81,7 +98,7 @@ fun CoinDetailScreen(
 
                     Spacer(modifier = Modifier.height(15.dp))
                 }
-                
+
                 items(coin.team) {
                     TeamListItem(
                         teamMember = it,
@@ -89,7 +106,11 @@ fun CoinDetailScreen(
                             .fillMaxWidth()
                             .padding(10.dp)
                     )
-                    Divider(thickness = 1.dp, color = Color.DarkGray, modifier = Modifier.padding(top = 6.dp, bottom = 6.dp))
+                    Divider(
+                        thickness = 1.dp,
+                        color = Color.DarkGray,
+                        modifier = Modifier.padding(top = 6.dp, bottom = 6.dp)
+                    )
                 }
             }
         }
@@ -107,7 +128,10 @@ fun CoinDetailScreen(
         }
 
         if (state.isLoading) {
-            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center), color = TextWhite)
+            CircularProgressIndicator(
+                modifier = Modifier.align(Alignment.Center),
+                color = TextWhite
+            )
         }
     }
 }

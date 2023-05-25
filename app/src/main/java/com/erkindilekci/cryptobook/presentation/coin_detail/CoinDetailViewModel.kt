@@ -8,8 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.erkindilekci.cryptobook.common.Constants
 import com.erkindilekci.cryptobook.common.Resource
 import com.erkindilekci.cryptobook.domain.use_case.get_coin.GetCoinUseCase
-import com.erkindilekci.cryptobook.domain.use_case.get_coins.GetCoinsUseCase
-import com.erkindilekci.cryptobook.presentation.coin_list.CoinListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -35,13 +33,16 @@ class CoinDetailViewModel @Inject constructor(
                 is Resource.Success -> {
                     _state.value = CoinDetailState(coin = it.data)
                 }
+
                 is Resource.Error -> {
-                    _state.value = CoinDetailState(error = it.message ?: "An unexpected error occurred!")
+                    _state.value =
+                        CoinDetailState(error = it.message ?: "An unexpected error occurred!")
                 }
+
                 is Resource.Loading -> {
                     _state.value = CoinDetailState(isLoading = true)
                 }
             }
         }.launchIn(viewModelScope)
     }
-}   
+}

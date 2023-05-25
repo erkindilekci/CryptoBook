@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -41,7 +40,7 @@ fun CoinListScreen(
                 })
             }
         }
-        
+
         if (state.error.isNotBlank()) {
             Text(
                 text = state.error,
@@ -55,7 +54,10 @@ fun CoinListScreen(
         }
 
         if (state.isLoading) {
-            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center), color = TextWhite)
+            CircularProgressIndicator(
+                modifier = Modifier.align(Alignment.Center),
+                color = TextWhite
+            )
         }
     }
 }

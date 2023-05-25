@@ -1,7 +1,6 @@
 package com.erkindilekci.cryptobook.domain.use_case.get_coin
 
 import com.erkindilekci.cryptobook.common.Resource
-import com.erkindilekci.cryptobook.data.remote.dto.toCoin
 import com.erkindilekci.cryptobook.data.remote.dto.toCoinDetail
 import com.erkindilekci.cryptobook.domain.model.CoinDetail
 import com.erkindilekci.cryptobook.domain.repository.CoinRepository
